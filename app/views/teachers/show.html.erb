@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @teacher.name %>
+</p>
+
+<p>
+  <b>Fathername:</b>
+  <%= @teacher.fathername %>
+</p>
+
+<p>
+  <b>Designation:</b>
+  <%= @teacher.designation %>
+</p>
+
+
+<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
+<%= link_to 'Back', teachers_path %>
+
+<%= form_for [@teacher, @student] do |f| %>
+
+	<div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :fathername %><br />
+    <%= f.text_field :fathername %>
+  </div>
+  <div class="field">
+    <%= f.label :class %><br />
+    <%= f.number_field :class %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= @sudents.each do |student| %>
+	
+	<p>
+		<span> <%= student.created_at %></span>
+	</p>
+	<p>
+		<span> <b> Student: </b></span>
+		<%= student.student %>
+	</p>
+<% end %>
