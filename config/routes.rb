@@ -1,11 +1,15 @@
 Managment::Application.routes.draw do
   
   
-root to: "teachers#index"
   
 
 
-  resources :teachers do
+root to: "classrooms#index"
+  
+
+
+  resources :classrooms do
+  resources :teachers  
   resources :students
   end
 

@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
   attr_accessible :class, :fathername, :name
 
-  belongs_to :teacher, dependent: :destroy
+  has_many :teachers, :through => :classrooms, :dependent => :destroy
 end

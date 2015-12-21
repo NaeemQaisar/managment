@@ -1,12 +1,14 @@
 class TeachersController < ApplicationController
   
-  before_filter :set_teacher, except: [:index, :new, :create]
-  before_filter :set_teacher, only: [:create]
+  # before_filter :set_teacher, except: [:index, :new, :create]
+  before_filter :set_teacher, only: [:show, :edit, :update, :destroy]
+  
+  respond_to :html
   # GET /teachers
   # GET /teachers.json
   def index
     @teachers = Teacher.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @teachers }
@@ -16,10 +18,8 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
-    @student = Student.new 
     @teacher = Teacher.find(params[:id])
-    @students = @teacher.students
-   
+       
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @teacher }
@@ -46,16 +46,17 @@ class TeachersController < ApplicationController
   # POST /teachers.json
   def create
     @teacher = Teacher.new(params[:teacher])
-
-    respond_to do |format|
-      if @teacher.save
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
-        format.json { render json: @teacher, status: :created, location: @teacher }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @teacher.errors, status: :unprocessable_entity }
-      end
-    end
+    @teacher.save
+    redirect_to @teacher.classroom
+    # respond_to do |format|
+      # if @teacher.save
+        # format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
+        # format.json { render json: @teacher, status: :created, location: @teacher }
+      # else
+        # format.html { render action: "new" }
+        # format.json { render json: @teacher.errors, status: :unprocessable_entity }
+      # end
+    # end
   end
 
   # PUT /teachers/1
@@ -86,10 +87,7 @@ class TeachersController < ApplicationController
     end
   end
   private
-  def set_teacher
-    @teacher = Teacher.find(params[:id])
-  end
-  def set_teacher
-    @teacher = Teacher.find(params[:teacher_id])
-  end
+    def set_teacher
+      @teacher = Teacher.find(params[:id])
+    end
 end
