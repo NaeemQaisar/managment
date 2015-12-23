@@ -1,5 +1,6 @@
 class Student < ActiveRecord::Base
-  attr_accessible :class, :fathername, :name
+  attr_accessible :section, :fathername, :name
 
-  has_many :teachers, :through => :classrooms, :dependent => :destroy
+  belongs_to :classroom, dependent: :destroy
+  validates_uniqueness_of :name
 end

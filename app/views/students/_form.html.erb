@@ -1,4 +1,4 @@
-<%= form_for(@student) do |f| %>
+<%= form_for [@classroom,@student] do |f| %>
   <% if @student.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
@@ -20,8 +20,8 @@
     <%= f.text_field :fathername %>
   </div>
   <div class="field">
-    <%= f.label :class %><br />
-    <%= f.number_field :class %>
+    <%= f.label :section %><br />
+    <%= f.number_field :section %>
   </div>
   <div class="actions">
     <%= f.submit %>

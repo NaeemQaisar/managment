@@ -45,7 +45,7 @@ class TeachersController < ApplicationController
   # POST /teachers
   # POST /teachers.json
   def create
-    @teacher = Teacher.new(params[:teacher])
+    @teacher = @classroom.teachers.new(params[:teacher])
     @teacher.save
     redirect_to @teacher.classroom
     # respond_to do |format|

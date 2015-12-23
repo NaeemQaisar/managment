@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   before_filter :set_student, only: [:show, :edit, :update, :destroy]
-  before_filter :set_teacher, only: [:create]
+  before_filter :set_classroom, only: [:new, :create]
+
   # GET /students
   # GET /students.json
   respond_to :html
@@ -17,7 +18,7 @@ class StudentsController < ApplicationController
   # GET /students/1.json
   def show
 
-    @student = Student.find(params[:id])
+    # @student = Student.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,6 +29,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   # GET /students/new.json
   def new
+
     @student = Student.new
 
     respond_to do |format|
@@ -38,16 +40,14 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
-    @student = Student.find(params[:id])
+    # @student = Student.find(params[:id])
   end
 
   # POST /students
   # POST /students.json
   def create
-    @student = @teacher.students.new(params[:student])
-    @student.save
-    redirect_to @student.teacher
-
+    @student = Students.new(params[:student])
+    
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
@@ -62,7 +62,7 @@ class StudentsController < ApplicationController
   # PUT /students/1
   # PUT /students/1.json
   def update
-    @student = Student.find(params[:id])
+    # @student = Student.find(params[:id])
 
     respond_to do |format|
       if @student.update_attributes(params[:student])
@@ -78,7 +78,7 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
-    @student = Student.find(params[:id])
+    # @student = Student.find(params[:id])
     @student.destroy
 
     respond_to do |format|
@@ -91,8 +91,7 @@ class StudentsController < ApplicationController
   def set_student
     @student = Student.find(params[:id])
   end
-
-  def set_teacher 
-    @teacher = Teacher.find(params[:teacher_id])
-  end
+  def set_classroom 
+      @classroom = Classroom.find(params[:classroom_id])
+    end
 end

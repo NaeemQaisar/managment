@@ -2,6 +2,7 @@ class ClassroomsController < ApplicationController
   # GET /classrooms
   # GET /classrooms.json
   before_filter :set_classroom, except: [:index, :new, :create]
+  respond_to :html
   def index
     @classrooms = Classroom.all
 
@@ -14,9 +15,9 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/1
   # GET /classrooms/1.json
   def show
-    @teacher = Teacher.new
+    # @student = Student.new
     @classroom = Classroom.find(params[:id])
-    @teachers = @classroom.teacher
+    # @students = @classroom.student
       respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @classroom }
