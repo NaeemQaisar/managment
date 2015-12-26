@@ -1,5 +1,6 @@
 <h1>Listing classrooms</h1>
 
+<%= button_to 'Sign Out', destroy_user_session_path, :method => :delete %>
 <table>
   <tr>
     <th>Name</th>
@@ -24,4 +25,3 @@
 <br />
 
 <%= link_to 'New Classroom', new_classroom_path %>
-<%= button_to 'Sign Out', destroy_user_session_path, :method => :delete %>
