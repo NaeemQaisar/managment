@@ -15,3 +15,9 @@ h1 {
 	font-size: 40px;
 	color: blue;
 }
+body {
+	float: left;
+	margin-left: 315px;
+	background-color: lightblue;
+	margin-top: 150px;
+}

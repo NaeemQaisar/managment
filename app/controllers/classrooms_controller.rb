@@ -1,7 +1,11 @@
 class ClassroomsController < ApplicationController
+  
+  before_filter :authenticate_user!
+
+  before_filter :set_classroom, except: [:index, :new, :create]
   # GET /classrooms
   # GET /classrooms.json
-  before_filter :set_classroom, except: [:index, :new, :create]
+  
   respond_to :html
   def index
     @classrooms = Classroom.all
@@ -15,9 +19,8 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/1
   # GET /classrooms/1.json
   def show
-    # @student = Student.new
     @classroom = Classroom.find(params[:id])
-    # @students = @classroom.student
+    
       respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @classroom }
@@ -28,6 +31,7 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/new.json
   def new
     @classroom = Classroom.new
+    @classroom.attachments.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,6 +48,7 @@ class ClassroomsController < ApplicationController
   # POST /classrooms.json
   def create
     @classroom = Classroom.new(params[:classroom])
+
 
     respond_to do |format|
       if @classroom.save
@@ -83,7 +88,10 @@ class ClassroomsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
   private
+  
   def set_classroom
     @classroom = Classroom.find(params[:id])
   end

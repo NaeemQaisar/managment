@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.fields_for :attachments do |image| %>
+      <%= image.file_field :image %>
+    <% end %>
+  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>

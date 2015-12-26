@@ -31,6 +31,7 @@ class StudentsController < ApplicationController
   def new
 
     @student = Student.new
+    @student.attachments.new
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+	<%= image_tag @student.attachments.first.image.url(:large) if @student.attachments.present? %>
+</p>
+
+<p>
   <b>Name:</b>
   <%= @student.name %>
 </p>
