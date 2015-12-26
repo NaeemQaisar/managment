@@ -14,6 +14,7 @@
   <tr>
     <td><%= classroom.name %></td>
     <td><%= classroom.description %></td>
+    <td><%= image_tag classroom.attachments.first.image.url(:thumb) if classroom.attachments.present? %></td>
     <td><%= link_to 'Add a Student', new_classroom_student_path(classroom.id) %></td>
     <td><%= link_to 'Show', classroom %></td>
     <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>

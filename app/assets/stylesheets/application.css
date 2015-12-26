@@ -14,10 +14,12 @@
 h1 {
 	font-size: 40px;
 	color: blue;
+	margin-left: 135px;
 }
 body {
-	float: left;
-	margin-left: 315px;
 	background-color: lightblue;
-	margin-top: 150px;
+    float: left;
+    line-height: 50px;
+    margin-left: 300px;
+    margin-top: 35px;
 }
