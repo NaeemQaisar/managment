@@ -20,3 +20,15 @@
 
 <%= link_to 'Edit', edit_classroom_path(@classroom) %> |
 <%= link_to 'Back', classrooms_path %>
+
+	<% @classroom.students.each do |student| %>
+	
+	<p>
+		<span> <b> Student:</b></span>
+ 	<%= student.name %>
+ 	<p>
+		<span> <%= student.created_at %></span>
+	</p>
+ 	<%= image_tag student.attachments.first.image.url(:medium) if student.attachments.present? %>
+	<% end %>
+</p>
