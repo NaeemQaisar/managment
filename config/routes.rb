@@ -1,25 +1,17 @@
 Managment::Application.routes.draw do
 root to: "classrooms#index"
   
-  
-  
-
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   devise_for :users
   ActiveAdmin.routes(self)
 
-  
-
-
   resources :classrooms do
   resources :teachers  
   resources :students
   end
-
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -30,6 +30,9 @@ class StudentsController < ApplicationController
   # GET /students/new.json
   def new
 
+    if params[:classroom_id].present?
+      @classroom = Classroom.find(params[:classroom_id])
+    end
     @student = Student.new
     @student.attachments.new
 
