@@ -18,7 +18,9 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
-    @teacher = Teacher.find(params[:id])
+    teacher = Teacher.new
+    @teachers = @student.teachers 
+    # @teacher = Teacher.find(params[:id])
        
     respond_to do |format|
       format.html # show.html.erb
@@ -39,30 +41,31 @@ class TeachersController < ApplicationController
 
   # GET /teachers/1/edit
   def edit
-    @teacher = Teacher.find(params[:id])
+    # @teacher = Teacher.find(params[:id])
   end
 
   # POST /teachers
   # POST /teachers.json
   def create
     @teacher = @classroom.teachers.new(params[:teacher])
-    @teacher.save
-    redirect_to @teacher.classroom
-    # respond_to do |format|
-      # if @teacher.save
-        # format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
-        # format.json { render json: @teacher, status: :created, location: @teacher }
-      # else
-        # format.html { render action: "new" }
-        # format.json { render json: @teacher.errors, status: :unprocessable_entity }
-      # end
-    # end
+    @students = Student.where(:id => params[:student])
+    @teacher.students << @students
+    
+    respond_to do |format|
+      if @teacher.save
+        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
+        format.json { render json: @teacher, status: :created, location: @teacher }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @teacher.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /teachers/1
   # PUT /teachers/1.json
   def update
-    @teacher = Teacher.find(params[:id])
+    # @teacher = Teacher.find(params[:id])
 
     respond_to do |format|
       if @teacher.update_attributes(params[:teacher])

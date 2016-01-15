@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151226071031) do
+ActiveRecord::Schema.define(:version => 20160108011203) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -74,6 +74,11 @@ ActiveRecord::Schema.define(:version => 20151226071031) do
   end
 
   add_index "students", ["classroom_id"], :name => "index_students_on_classroom_id"
+
+  create_table "students_teachers", :id => false, :force => true do |t|
+    t.integer "student_id"
+    t.integer "teacher_id"
+  end
 
   create_table "teachers", :force => true do |t|
     t.string   "name"

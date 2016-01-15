@@ -8,8 +8,8 @@ root to: "classrooms#index"
   ActiveAdmin.routes(self)
 
   resources :classrooms do
-  resources :teachers  
   resources :students
+  resources :teachers
   end
   
   # The priority is based upon order of creation:

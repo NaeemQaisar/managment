@@ -9,4 +9,11 @@ class Classroom < ActiveRecord::Base
   has_many :students
   validates_uniqueness_of :name
 
+  define_index do 
+
+		indexes classroom(:name), :as => :classroom, :sortable => true
+
+    has created_at, updated_at
+	end
+
 end

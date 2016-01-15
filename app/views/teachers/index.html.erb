@@ -15,8 +15,8 @@
     <td><%= teacher.name %></td>
     <td><%= teacher.fathername %></td>
     <td><%= teacher.designation %></td>
-    <td><%= link_to 'Show', classroom_teacher %></td>
-    <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
+    <td><%= link_to 'Show', classroom_teacher_path %></td>
+    <td><%= link_to 'Edit', edit_classroom_teacher_path(classroom.id) %></td>
     <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Teacher', new_sir_path %>
+<%= link_to 'New Teacher', new_classroom_teacher_path %>

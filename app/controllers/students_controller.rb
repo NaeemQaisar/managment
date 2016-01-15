@@ -51,6 +51,8 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = @classroom.students.new(params[:student])
+    @teachers = Teacher.where(:id => params[:teacher])
+    @student.teachers << @teachers
     
     respond_to do |format|
       if @student.save
