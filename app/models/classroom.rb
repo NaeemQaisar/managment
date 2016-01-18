@@ -11,9 +11,10 @@ class Classroom < ActiveRecord::Base
 
   define_index do 
 
-		indexes classroom(:name), :as => :classroom, :sortable => true
+		indexes name
 
     has created_at, updated_at
+
 	end
 
 end

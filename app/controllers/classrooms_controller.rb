@@ -1,8 +1,12 @@
 class ClassroomsController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:index]
 
   before_filter :set_classroom, except: [:index, :new, :create]
+
+  before_filter :check_privileges!, only: [:new, :create, :edit, :save]
+
+  
   # GET /classrooms
   # GET /classrooms.json
   
@@ -93,6 +97,8 @@ class ClassroomsController < ApplicationController
   private
   
   def set_classroom
+    
     @classroom = Classroom.find(params[:id])
+  
   end
 end
