@@ -1,13 +1,17 @@
 h1 {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 41px;
-  color: blue;
-  margin-left: 390px;
+  color: #fff;
+  margin-left: 345px;
+  background-color: #34444F;
+  padding: 20px 20px;
+  margin-right: 379px;
+  
 }
 
 body {
   font-family: verdana, arial, helvetica, sans-serif;
-  background-color: lightblue;
+  background-color: #66CCCC;
   float: left;
   margin-top: 35px;
 }
@@ -15,7 +19,8 @@ body {
 .usermail {
   margin-left: 425px;
 }
-.img {
-  float: left;
-  margin-left: 200px;
+
+.table-responsive {
+  background-color: #C4EDEA;
 }
+
