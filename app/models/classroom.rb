@@ -5,9 +5,22 @@ class Classroom < ActiveRecord::Base
   has_many :attachments, as: :attachable, dependent: :destroy
   accepts_nested_attributes_for :attachments
   
+  belongs_to :user, dependent: :destroy
   
   has_many :students
   validates_uniqueness_of :name
+
+  
+
+def self.search(search)
+  if search
+    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+  else
+    find(:all)
+  end
+end
+
+
 
   define_index do 
 

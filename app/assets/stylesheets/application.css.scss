@@ -10,26 +10,7 @@
  *
  
  */
- 
 
-h1 {
-	font-size: 40px;
-	color: blue;
-	margin-left: 210px;
-}
-body {
-	background-color: lightblue;
-    float: left;
-    line-height: 50px;
-    margin-left: 300px;
-    margin-top: 35px;
-}
-.heading {
-	font-size: 40px;
-	margin-top: 0px;
-	margin-left: 165px;
-	color: blue;
-}
-.usermail {
-	margin-left: 275px;
-}
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "user";

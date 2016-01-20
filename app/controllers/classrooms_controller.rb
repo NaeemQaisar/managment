@@ -4,16 +4,19 @@ class ClassroomsController < ApplicationController
 
   before_filter :set_classroom, except: [:index, :new, :create]
 
-  before_filter :check_privileges!, only: [:new, :create, :edit, :save]
-
-  
+    
   # GET /classrooms
   # GET /classrooms.json
   
   respond_to :html
   def index
-    @classrooms = Classroom.all
-
+    # @classrooms = Classroom.all
+    @classrooms = Classroom.search(params[:search])
+    # if params[:search]
+    #   @classrooms = Classroom.search params[:search]
+    # else
+    #   @classrooms = Classroom.all
+    # end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @classrooms }

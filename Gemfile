@@ -33,7 +33,8 @@ gem 'paperclip'
 gem 'activeadmin'
 gem 'meta_search', '>=1.1.0.pre'
 gem 'thinking-sphinx', '~> 2.0.0'
-
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

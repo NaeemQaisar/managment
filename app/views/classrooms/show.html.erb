@@ -1,37 +1,68 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-	<span class="heading"> <b> Classroom </b></span>
+	<h1><b> CLASSROOM </b></h1>
 </p>
+<div>
+  <p>
+  	<%= image_tag @classroom.attachments.first.image.url(:large) if @classroom.attachments.present? %>
+  </p>
+</div>	
 
-<p>
-	<%= image_tag @classroom.attachments.first.image.url(:large) if @classroom.attachments.present? %>
-</p>
-	
+<div class="row">
+	<div class="col-sm-6">
+		<p>
+			<b>Name:</b>
+			<%= @classroom.name %>
+		</p>
+	</div>
+	<div class="col-sm-6">
+		<p>
+			<b>Description:</b>
+			<%= @classroom.description %>
+		</p>
+	</div>
+</div>
 
 
-<p>
-  <b>Name:</b>
-  <%= @classroom.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @classroom.description %>
-</p>
 
 
 <%= link_to 'Edit', edit_classroom_path(@classroom) %> |
 <%= link_to 'Back', classrooms_path %>
 
-	<% @classroom.students.each do |student| %>
-	
-	<p>
-		<span> <b> Student:</b></span>
- 	<%= student.name %>
- 	<p>
-		<span> <%= student.created_at %></span>
-	</p>
- 	<%= image_tag student.attachments.first.image.url(:medium) if student.attachments.present? %>
-	<% end %>
-</p>
+  	<% @classroom.students.each do |student| %>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <td>
+      <tr>
+        <div class="row">
+          <div class="col-sm-2">
+       	    <td>
+       		   <span> <b> Student:</b></span>
+       	      <%= student.name %>
+       	    </td>
+          </div>    
+          <div class="col-sm-2">
+            <td>
+       	      <span> <b> Father Name:</b></span>
+       	      <%= student.fathername %>
+       	    </td>
+          </div>
+          <div class="col-sm-2">
+       	    <td>
+      		    <span> <%= student.created_at %></span>
+      	    </td>
+          </div>
+          <div class="col-sm-2">
+       	    <div class="img">
+              <td>
+                <%= image_tag student.attachments.first.image.url(:thumb) if student.attachments.present? %>
+              </td>
+                <% end %>
+            </div>
+          </div>
+        </div>  
+      </tr>
+    </td> 
+ </table>
+</div>
