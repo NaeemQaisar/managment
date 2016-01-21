@@ -3,11 +3,13 @@
 <p>
 	<h1><b> CLASSROOM </b></h1>
 </p>
+
 <div>
-  <p>
+  <div class="img-show">
   	<%= image_tag @classroom.attachments.first.image.url(:large) if @classroom.attachments.present? %>
-  </p>
+  </div>
 </div>	
+
 
 <div class="row">
 	<div class="col-sm-6">
@@ -30,6 +32,7 @@
 <%= link_to 'Edit', edit_classroom_path(@classroom), class: 'btn btn-primary btn-md' %> |
 <%= link_to 'Back', classrooms_path, class: 'btn btn-default btn-md' %>
 
+<p></p>
   	<% @classroom.students.each do |student| %>
 <div class="table-responsive">
   <table class="table table-hover">

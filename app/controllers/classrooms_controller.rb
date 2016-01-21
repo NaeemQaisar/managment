@@ -1,6 +1,6 @@
 class ClassroomsController < ApplicationController
   
-  before_filter :authenticate_user!, only: [:index]
+  before_filter :authenticate_user!, except: [:index]
 
   before_filter :set_classroom, except: [:index, :new, :create]
 
@@ -10,13 +10,15 @@ class ClassroomsController < ApplicationController
   
   respond_to :html
   def index
+    # @classrooms = User.find(params[:user_id]).classrooms
     # @classrooms = Classroom.all
-    @classrooms = Classroom.search(params[:search])
-    # if params[:search]
-    #   @classrooms = Classroom.search params[:search]
-    # else
-    #   @classrooms = Classroom.all
-    # end
+    
+    if params[:search]
+      @classrooms = Classroom.search params[:search], :with => {
+    :created_at => 1.day.ago..Time.now}
+    else
+      @classrooms = params[:user_id].present? ? User.find(params[:user_id]).classrooms : Classroom.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @classrooms }
@@ -54,7 +56,7 @@ class ClassroomsController < ApplicationController
   # POST /classrooms
   # POST /classrooms.json
   def create
-    @classroom = Classroom.new(params[:classroom])
+    @classroom = current_user.classrooms.new(params[:classroom])
 
 
     respond_to do |format|

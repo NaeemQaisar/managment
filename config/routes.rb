@@ -6,10 +6,14 @@ root to: "classrooms#index"
 
   devise_for :users
   ActiveAdmin.routes(self)
-
+  
+  resources :users do
+    resources :classrooms
+  end
+  
   resources :classrooms do
-  resources :students
-  resources :teachers
+    resources :students
+    resources :teachers
   end
   
   # The priority is based upon order of creation:

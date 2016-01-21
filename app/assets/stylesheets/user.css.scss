@@ -13,7 +13,7 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   background-color: #66CCCC;
   float: left;
-  margin-top: 35px;
+  margin-top: 0px;
 }
 
 .usermail {
@@ -23,4 +23,16 @@ body {
 .table-responsive {
   background-color: #C4EDEA;
 }
-
+.btn-signout {
+  float: right;
+  margin-top: -40px;
+  margin-right: 57px;
+}
+.col-sm-8 {
+  float: left;
+  margin-left: 350px;
+}
+.img-show {
+  float: left;
+  margin-left: 250px;
+}

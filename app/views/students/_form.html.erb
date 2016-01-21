@@ -10,26 +10,51 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.fields_for :attachments do |image| %>
-      <%= image.file_field :image %>
-    <% end %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="field">
+          <%= f.fields_for :attachments do |image| %>
+          <%= image.file_field :image %>
+          <% end %>
+        </div>  
+      </div>  
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, class: "span2", placeholder: "Enter Student Name" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="field">
+          <%= f.label :fathername %><br />
+          <%= f.text_field :fathername, class: "span2", placeholder: "Enter Father Name" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">    
+        <div class="field">
+          <%= f.label :section %><br />
+          <%= f.number_field :section %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :fathername %><br />
-    <%= f.text_field :fathername %>
+  <p></p>
+  <div class="col-sm-8">
+    <%= f.label :teachers %>
+    <%= select_tag "teacher", options_from_collection_for_select(Teacher.all, 'id', 'name', @student.teachers.map{ |j| j.id}), :multiple => true %>
   </div>
-  
-  <div class="field">
-    <%= f.label :section %><br />
-    <%= f.number_field :section %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  <%= f.label :teachers %>
-  <%= select_tag "teacher", options_from_collection_for_select(Teacher.all, 'id', 'name', @student.teachers.map{ |j| j.id}), :multiple => true %>
 <% end %>
