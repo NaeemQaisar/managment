@@ -115,10 +115,19 @@
       <%= submit_tag "Search", :name => nil %>
     </div>
 <% end %>
-
-
+<div class="btn-signin">
+<%= link_to new_user_session_path do %>
+    <button class="btn btn-succes btn-mini">Sign In</button>
+    <% end %>
+</div>
 <div class="btn-signout">
 <%= button_to 'Sign Out', destroy_user_session_path, class: 'btn btn-danger btn-md', :method => :delete %>
+</div>
+<div class="btn-signup">
+or <%= link_to new_user_registration_path do %>
+        <button class="btn-mini btn btn-info">Sign Up</button>
+        <% end %>
+             
 </div>
 <div class="table-responsive">
 <table class="table table-hover">

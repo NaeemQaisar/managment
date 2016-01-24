@@ -23,11 +23,13 @@ body {
 .table-responsive {
   background-color: #C4EDEA;
 }
+
 .btn-signout {
   float: right;
   margin-top: -40px;
-  margin-right: 57px;
+  margin-right: 120px;
 }
+
 .col-sm-8 {
   
   
@@ -35,7 +37,20 @@ body {
   width: 100%;
   padding: 0 0 0 400px;
 }
+
 .img-show {
   float: left;
   margin-left: 250px;
+}
+
+.btn-signin {
+  float: right;
+  margin-top: -40px;
+  margin-right: 220px;
+}
+
+.btn-signup {
+  float: right;
+  margin-top: -40px;
+  margin-right: 20px;
 }
