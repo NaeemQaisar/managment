@@ -57,7 +57,7 @@ class ClassroomsController < ApplicationController
   # POST /classrooms.json
   def create
     @classroom = current_user.classrooms.new(params[:classroom])
-
+    @classroom.user_id = current_user.id
 
     respond_to do |format|
       if @classroom.save
